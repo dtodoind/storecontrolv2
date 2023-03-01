@@ -50,9 +50,9 @@ function Colorpicker({colap, addorder, ...props}) {
                 };
                 // console.log(edit_val);
                 
-                await axios.put('http://localhost:5000/product/edit', edit_val)
+                await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/product/edit', edit_val)
             }
-            await axios.get("http://localhost:5000/product").then(async (item) => {
+            await axios.get("https://storecontrolserverv2-production-3675.up.railway.app/product").then(async (item) => {
                 var alldata = item.data
                 var dep = JSON.parse(localStorage.getItem("DepositoLogin"))
                 if(alldata.length > 0) {

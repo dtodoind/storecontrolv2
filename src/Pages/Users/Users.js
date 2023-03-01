@@ -45,8 +45,8 @@ function Users(props) {
             window.api.getAllData("Clients_Returns").then(async (client_ret) => {
                 if (client_ret.Expenses_Returns) {
                     client_ret.Expenses_Returns.forEach(async (ret) => {
-                        await axios.delete(`http://localhost:5000/register/delete/${ret.id}`).then(async dele => {
-                            await axios.get("http://localhost:5000/register").then(async (item7) => {
+                        await axios.delete(`https://storecontrolserverv2-production-3675.up.railway.app/register/delete/${ret.id}`).then(async dele => {
+                            await axios.get("https://storecontrolserverv2-production-3675.up.railway.app/register").then(async (item7) => {
 
                                 allClients(item7.data)
                                 // setAllExpenses(item7.data)
@@ -61,8 +61,8 @@ function Users(props) {
 
         // window.api.addData(item.data,"Users")
 
-        /*      axios.delete(`http://localhost:5000/register/delete/${id}`).then( dele => {
-               axios.get("http://localhost:5000/register").then( (response) => {
+        /*      axios.delete(`https://storecontrolserverv2-production-3675.up.railway.app/register/delete/${id}`).then( dele => {
+               axios.get("https://storecontrolserverv2-production-3675.up.railway.app/register").then( (response) => {
                   
                      allClients(response.data)
               
@@ -73,7 +73,7 @@ function Users(props) {
 
     const removeClient = async (id) => {
         if (Status) {
-            await axios.delete(`http://localhost:5000/register/delete/${id}`);
+            await axios.delete(`https://storecontrolserverv2-production-3675.up.railway.app/register/delete/${id}`);
             var e = Clients.filter(function (x) { return x.id !== id })
             allClients(e)
         } else {

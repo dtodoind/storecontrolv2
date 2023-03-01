@@ -53,7 +53,7 @@ function DetailsStore({ idModal="detailsStore", details_data, setDetailsData, in
         setAllPro(p)
         if(Status) {
             await axios.delete(
-                `http://localhost:5000/product/delete/${i}`
+                `https://storecontrolserverv2-production-3675.up.railway.app/product/delete/${i}`
             );
         } else {
             if (window.desktop) {
@@ -166,7 +166,7 @@ function DetailsStore({ idModal="detailsStore", details_data, setDetailsData, in
                         await window.api.addData(p, "Products");
                     }
                     if(Status) {
-                        await axios.put("http://localhost:5000/product/edit", db_val);
+                        await axios.put("https://storecontrolserverv2-production-3675.up.railway.app/product/edit", db_val);
                     }
 
                     // var p = await axios

@@ -178,7 +178,7 @@ function Products(props) {
         setAllPro(p)
         if (Status) {
             await axios.delete(
-                `http://localhost:5000/product/delete/${i}`
+                `https://storecontrolserverv2-production-3675.up.railway.app/product/delete/${i}`
             );
         } else {
             if (window.desktop) {
@@ -291,7 +291,7 @@ function Products(props) {
                         await window.api.addData(p, "Products");
                     }
                     if (Status) {
-                        await axios.put("http://localhost:5000/product/edit", db_val);
+                        await axios.put("https://storecontrolserverv2-production-3675.up.railway.app/product/edit", db_val);
                     }
 
                     // var p = await axios
@@ -407,14 +407,14 @@ function Products(props) {
     // 		// store_Desposito('Products', Status, DepositoAdd, deposito)
     //         // if(CategoryAdd.length === 0) {
     // 		// 	if(Status) {
-    // 		// 		await axios.get("http://localhost:5000/category").then(async (item) => {
+    // 		// 		await axios.get("https://storecontrolserverv2-production-3675.up.railway.app/category").then(async (item) => {
     // 		// 			console.log('Products -> Category')
     // 		// 			category(item.data);
     // 		// 			if(window.desktop) {
     //         //                 await window.api.getAllData("CategoryAdd").then(async (item2) => {
     //         //                     item2.CategoryAdd.forEach(async function (cate) {
     //         //                         if (!Object.keys(cate).includes('createdAt')) {
-    //         //                             await axios.post('http://localhost:5000/category/new', cate).then(async (item3) => {
+    //         //                             await axios.post('https://storecontrolserverv2-production-3675.up.railway.app/category/new', cate).then(async (item3) => {
     //         //                                     console.log('Products -> Category Inserted')
     //         //                                     category(item3.data)
     //         //                                     var da = item.data
@@ -437,7 +437,7 @@ function Products(props) {
     //         //                             }
     //         //                             if(flaging === 0) {
     //         //                                 console.log('Products -> Category Delete')
-    //         //                                 await axios.delete(`http://localhost:5000/category/delete/${c.Category_id}`)
+    //         //                                 await axios.delete(`https://storecontrolserverv2-production-3675.up.railway.app/category/delete/${c.Category_id}`)
     //         //                                 var filter = item.data.filter(item => item.Category_id !== c.Category_id)
     //         //                                 await window.api.addData(filter, "CategoryAdd")
     //         //                                 category(filter)
@@ -461,7 +461,7 @@ function Products(props) {
     //         // }
     //         // if(Products.length === 0) {
     //         //     if(Status) {
-    //         //         await axios.get("http://localhost:5000/product").then(async (item) => {
+    //         //         await axios.get("https://storecontrolserverv2-production-3675.up.railway.app/product").then(async (item) => {
     //         //             console.log('Products -> Products')
     //         //             var alldata = item.data
     //         //             if (alldata.length > 0) {
@@ -489,15 +489,15 @@ function Products(props) {
     //         //                         if(order_ret.Orders_Returns) {
     //         //                             console.log(order_ret.Orders_Returns)
     //         //                             order_ret.Orders_Returns.forEach(async (ret) => {
-    //         //                                 await axios.put('http://localhost:5000/product/quantity', {Product_id: ret.Product_id, Stock: ret.Stock})
+    //         //                                 await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/product/quantity', {Product_id: ret.Product_id, Stock: ret.Stock})
     //         //                                 var new_data = alldata.findIndex(p => p.Product_id === ret.Product_id)
     //         //                                 alldata[new_data].Stock = JSON.parse(ret.Stock)
     //         //                                 setAllPro(alldata)
     //         //                                 allproduct(alldata)
-    //         //                                 await axios.delete(`http://localhost:5000/ordermaster/delete/${ret.order.Order_id}`)
-    //         //                                 await axios.delete(`http://localhost:5000/orderproduct/delete/${ret.val}`)
+    //         //                                 await axios.delete(`https://storecontrolserverv2-production-3675.up.railway.app/ordermaster/delete/${ret.order.Order_id}`)
+    //         //                                 await axios.delete(`https://storecontrolserverv2-production-3675.up.railway.app/orderproduct/delete/${ret.val}`)
     //         //                                 .then(async item => {
-    //         //                                     await axios.get('http://localhost:5000/ordermaster')
+    //         //                                     await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/ordermaster')
     //         //                                         .then(async prod => {
     //         //                                             let months_data = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     //         //                                             prod.data.sort(function (d1, d2) {
@@ -521,11 +521,11 @@ function Products(props) {
     //         //                                                     Sales_Activity[t][months_data[m]] = JSON.stringify(Sales_Activity[t][months_data[m]])
     //         //                                                 }
     //         //                                             }
-    //         //                                             await axios.put('http://localhost:5000/salesactivity/day', {
+    //         //                                             await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/salesactivity/day', {
     //         //                                                 Sales_id: Sales_Activity[index].Sales_id,
     //         //                                                 ...Sales_Activity[index]
     //         //                                             })
-    //         //                                             await axios.get('http://localhost:5000/salesactivity')
+    //         //                                             await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/salesactivity')
     //         //                                                 .then(async item => {
     //         //                                                     for(var t=0; t < item.data.length; t++) {
     //         //                                                         for(var m=0; m < months_data.length; m++) {
@@ -584,7 +584,7 @@ function Products(props) {
     //         //                                 Image: JSON.stringify(pro.Image),
     //         //                             }
     //         //                             console.log(convert_data)
-    //         //                             await axios.post("http://localhost:5000/product/new", convert_data).then(async (item) => {
+    //         //                             await axios.post("https://storecontrolserverv2-production-3675.up.railway.app/product/new", convert_data).then(async (item) => {
     //         //                                 item.data.codigo = JSON.parse(item.data.codigo);
     //         //                                 item.data.Color = JSON.parse(item.data.Color);
     //         //                                 item.data.Size = JSON.parse(item.data.Size);
@@ -623,10 +623,10 @@ function Products(props) {
     //         //                             };
     //         //                             // console.log(edit_val);
 
-    //         //                             await axios.put('http://localhost:5000/product/edit', edit_val).then(res => {
+    //         //                             await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/product/edit', edit_val).then(res => {
     //         //                                 console.log(res.data, 'its here')
     //         //                             })
-    //         //                             await axios.get("http://localhost:5000/product").then(async (item) => {
+    //         //                             await axios.get("https://storecontrolserverv2-production-3675.up.railway.app/product").then(async (item) => {
     //         //                                 console.log('Products -> Update')
     //         //                                 var alldata2 = item.data
     //         //                                 if (alldata2.length > 0) {
@@ -665,9 +665,9 @@ function Products(props) {
     //         //                         }
     //         //                         if (flag === 0) {
     //         //                             await axios.delete(
-    //         //                                 `http://localhost:5000/product/delete/${alldata[h].Product_id}`
+    //         //                                 `https://storecontrolserverv2-production-3675.up.railway.app/product/delete/${alldata[h].Product_id}`
     //         //                             );
-    //         //                             await axios.get("http://localhost:5000/product").then(async (item) => {
+    //         //                             await axios.get("https://storecontrolserverv2-production-3675.up.railway.app/product").then(async (item) => {
     //         //                                 console.log('Products -> Delete')
     //         //                                 var alldata = item.data
     //         //                                 if (alldata.length > 0) {
@@ -712,7 +712,7 @@ function Products(props) {
     //         // }
     //         // if (DepositoAdd.length === 0) {
     //         //     if (Status) {
-    //         //         await axios.get("http://localhost:5000/deposito").then(async (item) => {
+    //         //         await axios.get("https://storecontrolserverv2-production-3675.up.railway.app/deposito").then(async (item) => {
     //         //             console.log('Products -> Deposito')
     //         //             deposito(item.data);
     //         //             if (window.desktop) {

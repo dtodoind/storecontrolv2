@@ -33,7 +33,7 @@ function Dropdown({ name, dropvalues, onChange, touched, errors, value_select, i
         e.preventDefault()
         if(name === 'Category_id') {
             if(Status) {
-                await axios.post('http://localhost:5000/category/new', { Category_id: uuidv4(), nombre: inputText})
+                await axios.post('https://storecontrolserverv2-production-3675.up.railway.app/category/new', { Category_id: uuidv4(), nombre: inputText})
                     .then(async (item) => {
                         category(item.data)
                         var cate = CategoryAdd
@@ -69,7 +69,7 @@ function Dropdown({ name, dropvalues, onChange, touched, errors, value_select, i
                     setError(`${inputText} is a Employee name`)
                 } else {
                     de.push(inputText)
-                    await axios.put('http://localhost:5000/deposito/employee', { Deposito_id: deposit.Deposito_id,  Employee_list: JSON.stringify(de)})
+                    await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/deposito/employee', { Deposito_id: deposit.Deposito_id,  Employee_list: JSON.stringify(de)})
                         .then(async (item) => {
                             // console.log(de)
                             var dep = {
@@ -85,7 +85,7 @@ function Dropdown({ name, dropvalues, onChange, touched, errors, value_select, i
                             }
                             localStorage.setItem('DepositoLogin', JSON.stringify(dep))
                             DepositoLog(dep)
-                            await axios.get('http://localhost:5000/deposito')
+                            await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/deposito')
                                 .then(item => {
                                     deposito(item.data)
                                     setInputText('')
@@ -97,7 +97,7 @@ function Dropdown({ name, dropvalues, onChange, touched, errors, value_select, i
         }
         else if(name==="Expense_cat" || name==="Expense_cate"){
             if(Status) {
-                await axios.post('http://localhost:5000/expensecat/new', {nombre: inputText}).then(async (item)=>{
+                await axios.post('https://storecontrolserverv2-production-3675.up.railway.app/expensecat/new', {nombre: inputText}).then(async (item)=>{
                     allexpensecat(item.data)
                     var exp_cate = Expensecat
                     exp_cate.push(item.data)
@@ -122,7 +122,7 @@ function Dropdown({ name, dropvalues, onChange, touched, errors, value_select, i
             }
         }
         // else if(name === 'Deposito') {
-        //     await axios.post('http://localhost:5000/deposito/new', { nombre: inputText})
+        //     await axios.post('https://storecontrolserverv2-production-3675.up.railway.app/deposito/new', { nombre: inputText})
         //         .then((item) => {
         //             deposito(item.data)
         //             setInputText('')
@@ -134,7 +134,7 @@ function Dropdown({ name, dropvalues, onChange, touched, errors, value_select, i
         var filtered = CategoryAdd.filter(function(el, i) { return index !== i; });
         category(filtered)
         if(Status) {
-            await axios.delete(`http://localhost:5000/category/delete/${CategoryAdd.filter(function(el, i) { return index === i; })[0].Category_id}`)
+            await axios.delete(`https://storecontrolserverv2-production-3675.up.railway.app/category/delete/${CategoryAdd.filter(function(el, i) { return index === i; })[0].Category_id}`)
         } else {
             if(window.desktop) {
                 await window.api.addData(filtered, "CategoryAdd")

@@ -72,7 +72,7 @@ function Orders({ setOrderDetails, setOrdering, boxes = false, employee = null, 
 			// await store_Orders('Orders', Status, Orders, allorders, notify)
 			// if(Orders.length === 0) {
 			// 	if(Status) {
-			// 		await axios.get('http://localhost:5000/ordermaster')
+			// 		await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/ordermaster')
 			// 		.then(async (item) => {
 			// 				console.log('Orders -> Orders')
 			// 				item.data.sort(function (d1, d2) {
@@ -207,13 +207,13 @@ function Orders({ setOrderDetails, setOrdering, boxes = false, employee = null, 
 				await window.api.addData(Products, "Products");
 			}
 			if(Status) {
-				await axios.put('http://localhost:5000/product/quantity', req_data)
+				await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/product/quantity', req_data)
 				if(pay) {
-					await axios.delete(`http://localhost:5000/ordermaster/delete/${order.Order_id}`)
+					await axios.delete(`https://storecontrolserverv2-production-3675.up.railway.app/ordermaster/delete/${order.Order_id}`)
 				}
-				await axios.delete(`http://localhost:5000/orderproduct/delete/${val.Order_pro_id}`)
+				await axios.delete(`https://storecontrolserverv2-production-3675.up.railway.app/orderproduct/delete/${val.Order_pro_id}`)
 				.then(async item => {
-					await axios.get('http://localhost:5000/ordermaster')
+					await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/ordermaster')
 						.then(async prod => {
 							let months_data = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 							prod.data.sort(function (d1, d2) {
@@ -239,11 +239,11 @@ function Orders({ setOrderDetails, setOrdering, boxes = false, employee = null, 
 									Sales_Activity[t][months_data[m]] = JSON.stringify(Sales_Activity[t][months_data[m]])
 								}
 							}
-							await axios.put('http://localhost:5000/salesactivity/day', {
+							await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/salesactivity/day', {
 								Sales_id: Sales_Activity[index].Sales_id,
 								...Sales_Activity[index]
 							})
-							await axios.get('http://localhost:5000/salesactivity')
+							await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/salesactivity')
 								.then(async item => {
 									for(var t=0; t < item.data.length; t++) {
 										for(var m=0; m < months_data.length; m++) {
@@ -303,16 +303,16 @@ function Orders({ setOrderDetails, setOrdering, boxes = false, employee = null, 
 			// console.log({...order, Total_price: order.Total_price - val.Total_price}, order, details_data)
 			// setOrder({...order, Total_price: order.Total_price - val.Total_price})
 			if(Status) {
-				await axios.put('http://localhost:5000/product/quantity', req_data_el)
+				await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/product/quantity', req_data_el)
 				if(pay) {
-					await axios.put(`http://localhost:5000/ordermaster/price`, {
+					await axios.put(`https://storecontrolserverv2-production-3675.up.railway.app/ordermaster/price`, {
 						Order_id: order.Order_id,
 						Total_price: order.Total_price - val.Total_price
 					})
 				}
-				await axios.delete(`http://localhost:5000/orderproduct/delete/${val.Order_pro_id}`)
+				await axios.delete(`https://storecontrolserverv2-production-3675.up.railway.app/orderproduct/delete/${val.Order_pro_id}`)
 					.then(async item => {
-						await axios.get('http://localhost:5000/ordermaster')
+						await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/ordermaster')
 							.then( async prod => {
 								let months_data = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 								prod.data.sort(function (d1, d2) {
@@ -338,11 +338,11 @@ function Orders({ setOrderDetails, setOrdering, boxes = false, employee = null, 
 										Sales_Activity[t][months_data[m]] = JSON.stringify(Sales_Activity[t][months_data[m]])
 									}
 								}
-								await axios.put('http://localhost:5000/salesactivity/day', {
+								await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/salesactivity/day', {
 									Sales_id: Sales_Activity[index].Sales_id,
 									...Sales_Activity[index]
 								})
-								await axios.get('http://localhost:5000/salesactivity')
+								await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/salesactivity')
 									.then(async item => {
 										for(var t=0; t < item.data.length; t++) {
 											for(var m=0; m < months_data.length; m++) {

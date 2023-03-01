@@ -32,7 +32,7 @@ function ClientEdit({ idModal = "client_edit", Province, setCurrentUser, current
 
     const onSubmit = async (values, { resetForm }) => {
         if (Status) {
-            await axios.put("http://localhost:5000/register/edit", {
+            await axios.put("https://storecontrolserverv2-production-3675.up.railway.app/register/edit", {
                 id: currentUser.id,
                 nombre: values.Nombre,
                 number: values.Number,

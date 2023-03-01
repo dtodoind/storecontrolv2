@@ -34,7 +34,7 @@ function NewExpense({ ...props }) {
 
 	const onSubmit = async (values, { resetForm }) => {
 		if(Status) {
-			await axios.post("https://storecontrolserverv2-production-3675.up.railway.app/expense/new", {
+			await axios.post("https://storecontrolserverv2-production.up.railway.app/expense/new", {
 				...values,
 				date: new Date(values.date).toLocaleString(),
 				Deposito_id: JSON.parse(localStorage.getItem('DepositoLogin')).Deposito_id,

@@ -94,7 +94,7 @@ function TransferStock({ details_data, stocknum, setAllPro, ...props }) {
                     Category_id: details_data.Category_id,
                 }
                 if(Status) {
-                    await axios.post("https://storecontrolserverv2-production-3675.up.railway.app/product/new", {
+                    await axios.post("https://storecontrolserverv2-production.up.railway.app/product/new", {
                             ...inti,
                             Deposito_id: Deposito.filter(item => item.nombre === values.transferir)[0].Deposito_id
                         })
@@ -246,10 +246,10 @@ function TransferStock({ details_data, stocknum, setAllPro, ...props }) {
         // console.log(edit_val, main_pro)
         // console.log(Products)
         if(Status) {
-            await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/product/edit', edit_val)
-            await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/product/edit', main_pro)
+            await axios.put('https://storecontrolserverv2-production.up.railway.app/product/edit', edit_val)
+            await axios.put('https://storecontrolserverv2-production.up.railway.app/product/edit', main_pro)
         }
-        // await axios.get("https://storecontrolserverv2-production-3675.up.railway.app/product").then((item) => {
+        // await axios.get("https://storecontrolserverv2-production.up.railway.app/product").then((item) => {
         //     var alldata = item.data
         //     if(alldata.length > 0) {
         //         if(typeof alldata[0].Color === 'string') {

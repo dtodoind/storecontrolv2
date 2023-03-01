@@ -35,7 +35,7 @@ function ExpenseEdit({ allExpenses, setAllExpenses, editexp, seteditexp, ...prop
 
 	const onSubmit = async (values, { resetForm }) => {
 		if(Status) {
-			await axios.put("https://storecontrolserverv2-production-3675.up.railway.app/expense/edit", {
+			await axios.put("https://storecontrolserverv2-production.up.railway.app/expense/edit", {
 				...values,
 				ExpenseId: editexp.ExpenseId,
 				date: new Date(values.date).toLocaleString(),

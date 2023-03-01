@@ -43,7 +43,7 @@ function NewTienda({ details_data, setDetailsData, setAllPro, allpro, ...props }
         // )[0].Category_id;
         // alert(JSON.stringify(values, null, 2));
         if(Status) {
-            await axios.post("https://storecontrolserverv2-production-3675.up.railway.app/deposito/new", {
+            await axios.post("https://storecontrolserverv2-production.up.railway.app/deposito/new", {
                     nombre: values.nombre,
                     Email: values.Email,
                     Password: values.Password,

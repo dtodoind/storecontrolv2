@@ -50,7 +50,7 @@ function Tienda(props) {
 
 		deposito(result)
 		if(Status) {
-			await axios.delete(`https://storecontrolserverv2-production-3675.up.railway.app/deposito/delete/${id}`);
+			await axios.delete(`https://storecontrolserverv2-production.up.railway.app/deposito/delete/${id}`);
 		} else {
 			if(window.desktop) {
 				await window.api.addData(result, "Deposito")

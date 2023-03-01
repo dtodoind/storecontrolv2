@@ -46,7 +46,7 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
         //     if (Clients.length === 0) {
         //         if (Status) {
         //             // await store_SalesActivity('PayOrder', Status, Sales_Activity, allsalesactivity)
-        //             // await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/salesactivity')
+        //             // await axios.get('https://storecontrolserverv2-production.up.railway.app/salesactivity')
         //             //     .then(async item => {
         //             //         var main_data = item.data
         //             //         let months_data = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -88,7 +88,7 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
                 if (Status) {
                     if (Orders.find(ele => ele.Order_id === o.Order_id) !== undefined) {
                         returnProduct(return_val, false)
-                        await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/ordermaster/update', o)
+                        await axios.put('https://storecontrolserverv2-production.up.railway.app/ordermaster/update', o)
                             .then(async (item) => {
                                 var data_ord = []
                                 for (var d = 0; d < details_data.length; d++) {
@@ -96,7 +96,7 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
                                         data_ord.push(details_data[d])
                                     }
                                 }
-                                await axios.post('https://storecontrolserverv2-production-3675.up.railway.app/orderproduct/new', data_ord)
+                                await axios.post('https://storecontrolserverv2-production.up.railway.app/orderproduct/new', data_ord)
                                     .then(async (item2) => {
                                         var items_order = details_data.filter(ele => ele.Order_pro_id !== undefined)
                                         for (var q = 0; q < item2.data.length; q++) {
@@ -120,8 +120,8 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
                                                 await window.api.addData(Products, "Products")
                                             }
 
-                                            await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/product/quantity', req_data)
-                                            await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/ordermaster')
+                                            await axios.put('https://storecontrolserverv2-production.up.railway.app/product/quantity', req_data)
+                                            await axios.get('https://storecontrolserverv2-production.up.railway.app/ordermaster')
                                                 .then(async prod => {
                                                     prod.data.sort(function (d1, d2) {
                                                         return new Date(d2.createdAt) - new Date(d1.createdAt);
@@ -163,11 +163,11 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
                                                             Sales_Activity[t][months_data[m]] = JSON.stringify(Sales_Activity[t][months_data[m]])
                                                         }
                                                     }
-                                                    await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/salesactivity/day', {
+                                                    await axios.put('https://storecontrolserverv2-production.up.railway.app/salesactivity/day', {
                                                         Sales_id: Sales_Activity[index].Sales_id,
                                                         ...Sales_Activity[index]
                                                     })
-                                                    await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/salesactivity')
+                                                    await axios.get('https://storecontrolserverv2-production.up.railway.app/salesactivity')
                                                         .then(async item => {
                                                             if (typeof Sales_Activity[index][months_data[month]] === 'string') {
                                                                 for (var t = 0; t < item.data.length; t++) {
@@ -183,12 +183,12 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
                                     })
                             })
                     } else {
-                        await axios.post('https://storecontrolserverv2-production-3675.up.railway.app/ordermaster/new', o)
+                        await axios.post('https://storecontrolserverv2-production.up.railway.app/ordermaster/new', o)
                             .then(async (item) => {
                                 for (let i = 0; i < details_data.length; i++) {
                                     details_data[i].Order_id = item.data.Order_id
                                 }
-                                await axios.post('https://storecontrolserverv2-production-3675.up.railway.app/orderproduct/new', details_data)
+                                await axios.post('https://storecontrolserverv2-production.up.railway.app/orderproduct/new', details_data)
                                     .then(async (item2) => {
                                         for (let i = 0; i < details_data.length; i++) {
                                             var stock = Products.filter((p) => p.Product_id === details_data[i].Product_id)[0].Stock
@@ -207,8 +207,8 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
                                                 await window.api.addData(Products, "Products")
                                             }
 
-                                            await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/product/quantity', req_data)
-                                            await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/ordermaster')
+                                            await axios.put('https://storecontrolserverv2-production.up.railway.app/product/quantity', req_data)
+                                            await axios.get('https://storecontrolserverv2-production.up.railway.app/ordermaster')
                                                 .then(async prod => {
                                                     prod.data.sort(function (d1, d2) {
                                                         return new Date(d2.createdAt) - new Date(d1.createdAt);
@@ -241,11 +241,11 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
                                                             Sales_Activity[t][months_data[m]] = JSON.stringify(Sales_Activity[t][months_data[m]])
                                                         }
                                                     }
-                                                    await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/salesactivity/day', {
+                                                    await axios.put('https://storecontrolserverv2-production.up.railway.app/salesactivity/day', {
                                                         Sales_id: Sales_Activity[index].Sales_id,
                                                         ...Sales_Activity[index]
                                                     })
-                                                    await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/salesactivity')
+                                                    await axios.get('https://storecontrolserverv2-production.up.railway.app/salesactivity')
                                                         .then(async item => {
                                                             if (typeof Sales_Activity[index][months_data[month]] === 'string') {
                                                                 for (var t = 0; t < item.data.length; t++) {
@@ -270,7 +270,7 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
                                             var Color = code.Color[c]
                                             var Size = code.Size[c][index_code]
                                             if (Stock <= 3) {
-                                                axios.post("https://storecontrolserverv2-production-3675.up.railway.app/notification/new", {
+                                                axios.post("https://storecontrolserverv2-production.up.railway.app/notification/new", {
                                                     Title: Stock === 0 ? 'Stock danger' : Stock <= 3 ? 'Stock warning' : null,
                                                     Message: Stock === 0 ? `El producto de ${nombre} (${Color}, ${Size}) se agoto. cargue mas stock !` : Stock <= 3 ? `El producto de ${nombre} (${Color}, ${Size}) se esta apunto de acabar. cargue mas stock !` : null,
                                                     Date: new Date().toLocaleString("en-US")
@@ -376,7 +376,7 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
                 o['Client_name'] = client_name
                 if (Status) {
                     if (Orders.find(ele => ele.Order_id === o.Order_id) !== undefined) {
-                        await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/ordermaster/update', o)
+                        await axios.put('https://storecontrolserverv2-production.up.railway.app/ordermaster/update', o)
                             .then(async (item) => {
                                 var data_ord = []
                                 for (var d = 0; d < details_data.length; d++) {
@@ -384,7 +384,7 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
                                         data_ord.push(details_data[d])
                                     }
                                 }
-                                await axios.post('https://storecontrolserverv2-production-3675.up.railway.app/orderproduct/new', data_ord)
+                                await axios.post('https://storecontrolserverv2-production.up.railway.app/orderproduct/new', data_ord)
                                     .then(async (item2) => {
                                         var items_order = details_data.filter(ele => ele.Order_pro_id !== undefined)
                                         for (var q = 0; q < item2.data.length; q++) {
@@ -408,8 +408,8 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
                                                 await window.api.addData(Products, "Products")
                                             }
 
-                                            await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/product/quantity', req_data)
-                                            await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/ordermaster')
+                                            await axios.put('https://storecontrolserverv2-production.up.railway.app/product/quantity', req_data)
+                                            await axios.get('https://storecontrolserverv2-production.up.railway.app/ordermaster')
                                                 .then(async prod => {
                                                     prod.data.sort(function (d1, d2) {
                                                         return new Date(d2.createdAt) - new Date(d1.createdAt);
@@ -450,11 +450,11 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
                                                             Sales_Activity[t][months_data[m]] = JSON.stringify(Sales_Activity[t][months_data[m]])
                                                         }
                                                     }
-                                                    await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/salesactivity/day', {
+                                                    await axios.put('https://storecontrolserverv2-production.up.railway.app/salesactivity/day', {
                                                         Sales_id: Sales_Activity[index].Sales_id,
                                                         ...Sales_Activity[index]
                                                     })
-                                                    await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/salesactivity')
+                                                    await axios.get('https://storecontrolserverv2-production.up.railway.app/salesactivity')
                                                         .then(async item => {
                                                             if (typeof Sales_Activity[index][months_data[month]] === 'string') {
                                                                 for (var t = 0; t < item.data.length; t++) {
@@ -470,12 +470,12 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
                                     })
                             })
                     } else {
-                        await axios.post('https://storecontrolserverv2-production-3675.up.railway.app/ordermaster/new', o)
+                        await axios.post('https://storecontrolserverv2-production.up.railway.app/ordermaster/new', o)
                             .then(async (item) => {
                                 for (let i = 0; i < details_data.length; i++) {
                                     details_data[i].Order_id = item.data.Order_id
                                 }
-                                await axios.post('https://storecontrolserverv2-production-3675.up.railway.app/orderproduct/new', details_data)
+                                await axios.post('https://storecontrolserverv2-production.up.railway.app/orderproduct/new', details_data)
                                     .then(async (item2) => {
                                         for (let i = 0; i < details_data.length; i++) {
                                             var stock = Products.filter((p) => p.Product_id === details_data[i].Product_id)[0].Stock
@@ -486,8 +486,8 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
                                                 Stock: JSON.stringify(stock)
                                             }
 
-                                            await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/product/quantity', req_data)
-                                            await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/ordermaster')
+                                            await axios.put('https://storecontrolserverv2-production.up.railway.app/product/quantity', req_data)
+                                            await axios.get('https://storecontrolserverv2-production.up.railway.app/ordermaster')
                                                 .then(async prod => {
                                                     prod.data.sort(function (d1, d2) {
                                                         return new Date(d2.createdAt) - new Date(d1.createdAt);
@@ -520,11 +520,11 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
                                                             Sales_Activity[t][months_data[m]] = JSON.stringify(Sales_Activity[t][months_data[m]])
                                                         }
                                                     }
-                                                    await axios.put('https://storecontrolserverv2-production-3675.up.railway.app/salesactivity/day', {
+                                                    await axios.put('https://storecontrolserverv2-production.up.railway.app/salesactivity/day', {
                                                         Sales_id: Sales_Activity[index].Sales_id,
                                                         ...Sales_Activity[index]
                                                     })
-                                                    await axios.get('https://storecontrolserverv2-production-3675.up.railway.app/salesactivity')
+                                                    await axios.get('https://storecontrolserverv2-production.up.railway.app/salesactivity')
                                                         .then(async item => {
                                                             if (typeof Sales_Activity[index][months_data[month]] === 'string') {
                                                                 for (var t = 0; t < item.data.length; t++) {
@@ -549,7 +549,7 @@ function PayOrder({ Province, deposit, details_data, setDetailsData, order, setO
                                             var Color = code.Color[c]
                                             var Size = code.Size[c][index_code]
                                             if (Stock <= 3) {
-                                                axios.post("https://storecontrolserverv2-production-3675.up.railway.app/notification/new", {
+                                                axios.post("https://storecontrolserverv2-production.up.railway.app/notification/new", {
                                                     Title: Stock === 0 ? 'Stock danger' : Stock <= 3 ? 'Stock warning' : null,
                                                     Message: Stock === 0 ? `El producto de ${nombre} (${Color}, ${Size}) se agoto. cargue mas stock !` : Stock <= 3 ? `El producto de ${nombre} (${Color}, ${Size}) se esta apunto de acabar. cargue mas stock !` : null,
                                                     Date: new Date().toLocaleString("en-US")
